@@ -1,0 +1,37 @@
+schema_version: 1
+target_id: case25_fdi25_v2
+candidate_file: fdi25_visible_preparation_candidate_v2_REQUIRES_EXPERT_REVIEW.stl
+required_reviewer_count: 2
+reviewer_role: calibrated_prosthodontist
+criteria:
+  - id: correct_tooth_identity
+    question: Correct tooth identity (FDI 25)?
+    required: true
+  - id: complete_visible_boundary
+    question: Complete visible circumferential preparation boundary?
+    required: true
+  - id: no_adjacent_tooth_contamination
+    question: No adjacent-tooth contamination?
+    required: true
+  - id: no_gingival_contamination
+    question: No gingival contamination requiring removal?
+    required: true
+  - id: complete_axial_surfaces
+    question: Complete axial prepared surfaces?
+    required: true
+  - id: complete_occlusal_surface
+    question: Complete occlusal prepared surface?
+    required: true
+  - id: suitable_for_geometric_scoring
+    question: Suitable as geometric target for simulator scoring?
+    required: true
+decision_values:
+  - accept
+  - accept_after_edit
+  - reject
+promotion:
+  require_all_criteria_true: true
+  accepted_decisions:
+    - accept
+  require_same_mesh_checksum_across_reviews: true
+  promoted_filename: fdi25_validated_target.stl
