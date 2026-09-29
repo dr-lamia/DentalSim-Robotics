@@ -1,0 +1,91 @@
+name: Case 25 target expert review
+description: Record an independent expert review of the locked Case-25 preparation target candidate.
+title: "[Target review] Case 25 — "
+labels:
+  - target-validation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Review the exact locked Case-25 v2 mesh before completing this form.
+        Candidate SHA-256:
+        `400972eb83df4f34510863cd023e04d453ad843eda96b4a4169da9f7d71a91e2`
+
+  - type: input
+    id: reviewer_id
+    attributes:
+      label: Reviewer pseudonym
+    validations:
+      required: true
+
+  - type: input
+    id: review_date
+    attributes:
+      label: Review date
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+
+  - type: dropdown
+    id: identity
+    attributes:
+      label: Correct tooth identity (FDI 25)
+      options: [Pass, Fail]
+    validations: {required: true}
+
+  - type: dropdown
+    id: boundary
+    attributes:
+      label: Complete visible circumferential preparation boundary
+      options: [Pass, Fail]
+    validations: {required: true}
+
+  - type: dropdown
+    id: adjacent
+    attributes:
+      label: No adjacent-tooth contamination
+      options: [Pass, Fail]
+    validations: {required: true}
+
+  - type: dropdown
+    id: gingiva
+    attributes:
+      label: No unacceptable gingival contamination
+      options: [Pass, Fail]
+    validations: {required: true}
+
+  - type: dropdown
+    id: axial
+    attributes:
+      label: Axial preparation surfaces complete
+      options: [Pass, Fail]
+    validations: {required: true}
+
+  - type: dropdown
+    id: occlusal
+    attributes:
+      label: Occlusal preparation surface complete
+      options: [Pass, Fail]
+    validations: {required: true}
+
+  - type: dropdown
+    id: scoring
+    attributes:
+      label: Suitable for geometric target scoring
+      options: [Pass, Fail]
+    validations: {required: true}
+
+  - type: dropdown
+    id: decision
+    attributes:
+      label: Overall decision
+      options:
+        - Accept
+        - Accept after edit
+        - Reject
+    validations: {required: true}
+
+  - type: textarea
+    id: comments
+    attributes:
+      label: Comments / required edits
