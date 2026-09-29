@@ -1,0 +1,49 @@
+schema_version: 1
+profiles:
+  ppo_random_safety:
+    initialization: random
+    validated_target_required: false
+    rewards:
+      collision_avoidance: true
+      action_smoothness: true
+      action_regularization: true
+      surface_progress: false
+      finish_line_accuracy: false
+      taper_accuracy: false
+      over_reduction: false
+
+  bc_initialized_ppo_safety:
+    initialization: behavior_cloning
+    validated_target_required: false
+    rewards:
+      collision_avoidance: true
+      action_smoothness: true
+      action_regularization: true
+      surface_progress: false
+      finish_line_accuracy: false
+      taper_accuracy: false
+      over_reduction: false
+
+  ppo_random_accuracy:
+    initialization: random
+    validated_target_required: true
+    rewards:
+      collision_avoidance: true
+      action_smoothness: true
+      action_regularization: true
+      surface_progress: true
+      finish_line_accuracy: true
+      taper_accuracy: true
+      over_reduction: true
+
+  bc_initialized_ppo_accuracy:
+    initialization: behavior_cloning
+    validated_target_required: true
+    rewards:
+      collision_avoidance: true
+      action_smoothness: true
+      action_regularization: true
+      surface_progress: true
+      finish_line_accuracy: true
+      taper_accuracy: true
+      over_reduction: true
