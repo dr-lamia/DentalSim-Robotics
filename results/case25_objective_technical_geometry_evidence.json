@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "case_label": "case25_engineering",
+  "fdi": 25,
+  "candidate_version": 2,
+  "candidate_sha256": "400972eb83df4f34510863cd023e04d453ad843eda96b4a4169da9f7d71a91e2",
+  "expected_sha256": "400972eb83df4f34510863cd023e04d453ad843eda96b4a4169da9f7d71a91e2",
+  "source_expert_supervised": true,
+  "source_metadata": {
+    "reconstruction_type": "AnatomicCrown",
+    "tooth_scan_file_name": "2025-12-16_02241-018-upperjaw.stl",
+    "margin_bottom_type": "CrownBottom",
+    "matrix_to_scan_data_files": [[1.0,0.0,0.0,0.0],[0.0,1.0,0.0,0.0],[0.0,0.0,1.0,0.0],[0.0,0.0,0.0,1.0]],
+    "matrix_identity_max_abs_error": 0.0
+  },
+  "candidate_geometry": {
+    "vertices": 6557,
+    "faces": 12864,
+    "connected_components": 1,
+    "watertight": false,
+    "bounds_mm": [[-27.01831817626953,-16.041147232055664,2.037287950515747],[-19.139297485351562,-10.00979995727539,6.886887073516846]],
+    "extents_mm": [7.879020690917969,6.031347274780273,4.849599123001099],
+    "surface_area_mm2": 74.92528801727028
+  },
+  "source_coordinate_consistency": {
+    "candidate_vertices_tested": 6557,
+    "nearest_source_jaw_vertex_median_mm": 0.0,
+    "nearest_source_jaw_vertex_p95_mm": 0.0,
+    "nearest_source_jaw_vertex_max_mm": 0.0,
+    "fraction_exact_within_1e-6_mm": 1.0,
+    "pass": true
+  },
+  "objective_checks": {
+    "mesh_hash_matches_locked_candidate": "pass",
+    "single_connected_component": "pass",
+    "source_scan_transform_identity": "pass",
+    "candidate_preserves_source_scan_coordinates": "pass",
+    "scale_preserved_from_source_scan": "pass",
+    "orientation_preserved_from_source_scan": "pass"
+  },
+  "human_confirmation_still_required": [
+    "correct_tooth_identity_visual_confirmation",
+    "complete_prepared_surface",
+    "axial_surfaces_complete",
+    "occlusal_surface_complete",
+    "no_adjacent_tooth_contamination",
+    "no_unacceptable_gingival_contamination",
+    "suitable_as_reference_geometry"
+  ],
+  "status": "objective_technical_checks_pass_visual_confirmation_pending"
+}
