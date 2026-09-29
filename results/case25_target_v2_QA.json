@@ -1,0 +1,20 @@
+{
+  "case_id": "2025-12-16_02241-018",
+  "fdi": 25,
+  "reconstruction_type": "AnatomicCrown",
+  "candidate_version": 2,
+  "extraction_method": "upper-jaw faces projected inside 0.15 mm-buffered exocad preparation-margin XY loop; largest connected component retained",
+  "margin_points": 297,
+  "candidate_faces": 12864,
+  "candidate_vertices": 6557,
+  "candidate_body_count": 1,
+  "candidate_watertight": false,
+  "candidate_bounds_mm": [[-27.018318,-16.041147,2.037288],[-19.139297,-10.0098,6.886887]],
+  "margin_to_candidate_nearest_vertex_mm": {
+    "median": 1.6472054224630504,
+    "p95": 2.2285367388469486,
+    "max": 2.266989292584476,
+    "min": 1.2996214708338218
+  },
+  "status": "expert_review_required_before_ground_truth"
+}
