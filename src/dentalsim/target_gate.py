@@ -1,12 +1,12 @@
-"""Read-only scientific gates for target-dependent rewards.
+"""Scientific gates for target-dependent rewards.
 
-Two manifest contracts are supported:
-- geometric_rewards_enabled(): legacy validated-target contract requiring two
-  distinct reviewers.
-- target_accuracy_rewards_enabled(): newer promotion-manifest contract requiring
-  an explicit accuracy unlock and locked mesh hash.
+Primary target-validation route:
+- source clinical preparation was completed under expert supervision;
+- the extracted mesh passes technical geometry QA;
+- the exact mesh is hash-locked.
 
-Both gates are closed by default.
+The older independent-review manifest remains supported as an optional
+stronger audit route.
 """
 from __future__ import annotations
 
@@ -16,7 +16,6 @@ from typing import Any
 
 
 def load_validated_target_manifest(manifest_path: str | Path | None) -> dict[str, Any] | None:
-    """Load a target manifest safely."""
     if manifest_path is None:
         return None
     path = Path(manifest_path)
@@ -46,44 +45,44 @@ def _reviewer_ids(data: dict[str, Any]) -> list[str]:
     return ids
 
 
-def geometric_rewards_enabled(manifest_path: str | Path | None) -> bool:
-    """Legacy gate: require a validated target and two distinct reviewers."""
-    data = load_validated_target_manifest(manifest_path)
-    if data is None or data.get("status") != "validated_target":
-        return False
+def _technical_qa_route(data: dict[str, Any]) -> bool:
+    return (
+        data.get("status") == "validated_target"
+        and data.get("source_expert_supervised") is True
+        and data.get("technical_geometry_qa_pass") is True
+        and bool(data.get("mesh_sha256") or data.get("sha256"))
+        and bool(data.get("mesh_file") or data.get("target_file"))
+    )
 
-    target_file = data.get("target_file") or data.get("mesh_file")
-    mesh_hash = data.get("sha256") or data.get("mesh_sha256")
-    if not target_file or not mesh_hash:
-        return False
 
+def _legacy_review_route(data: dict[str, Any]) -> bool:
+    if data.get("status") != "validated_target":
+        return False
+    if not (data.get("target_file") or data.get("mesh_file")):
+        return False
+    if not (data.get("sha256") or data.get("mesh_sha256")):
+        return False
     ids = _reviewer_ids(data)
     if len(ids) < 2 or len(ids) != len(set(ids)):
         return False
-
-    review_count = data.get("review_count", len(ids))
     try:
-        if int(review_count) < 2:
-            return False
+        review_count = int(data.get("review_count", len(ids)))
     except Exception:
         return False
+    return review_count >= 2
 
-    return True
 
-
-def target_accuracy_rewards_enabled(manifest_path: str | Path | None) -> bool:
-    """New promotion-manifest gate.
-
-    The promotion script is responsible for creating this manifest only after
-    expert review succeeds. Runtime code therefore checks the immutable
-    promotion signals: validated status, explicit unlock, and a locked mesh
-    hash. It does not reinterpret the reviews at runtime.
-    """
+def geometric_rewards_enabled(manifest_path: str | Path | None) -> bool:
+    """Enable geometry rewards through either validated scientific route."""
     data = load_validated_target_manifest(manifest_path)
     if data is None:
         return False
-    return (
-        data.get("status") == "validated_target"
-        and data.get("accuracy_rewards_unlocked") is True
-        and bool(data.get("mesh_sha256") or data.get("sha256"))
-    )
+    return _technical_qa_route(data) or _legacy_review_route(data)
+
+
+def target_accuracy_rewards_enabled(manifest_path: str | Path | None) -> bool:
+    """Runtime gate for preparation-accuracy rewards."""
+    data = load_validated_target_manifest(manifest_path)
+    if data is None or data.get("accuracy_rewards_unlocked") is not True:
+        return False
+    return _technical_qa_route(data) or _legacy_review_route(data)
