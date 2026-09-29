@@ -1,0 +1,45 @@
+schema_version: 1
+case_id: 2025-12-16_02241-018
+fdi: 25
+reconstruction_type: AnatomicCrown
+candidate_status: expert_review_required_before_ground_truth
+
+source_assets:
+  upper_jaw: 2025-12-16_02241-018-upperjaw.stl
+  crown: 2025-12-16_02241-018-25-crown_cad.stl
+  tooth_model: 2025-12-16_02241-018-25-toothmodel_cad.obj
+  construction_info: 2025-12-16_02241-018.constructionInfo
+
+coordinate_status:
+  matrix_to_scan_data_files: identity
+  transform_ambiguity: false
+
+extraction:
+  anchor: fitted_crown
+  crown_footprint_pad_mm: 0.4
+  proximity_threshold_mm: 0.8
+  retain: largest_connected_component
+  threshold_interpretation: engineering_only_not_clinical
+
+observed_candidate:
+  faces: 14809
+  vertices: 7694
+  body_count: 1
+  watertight: false
+  candidate_to_crown_distance_mm:
+    median: 0.39116728113775795
+    p95: 0.7776253816100469
+    max: 0.923423306324058
+
+allowed_now:
+  - visualization
+  - isaac_import
+  - collision_debugging
+  - expert_boundary_review
+
+disabled_until_expert_approval:
+  - surface_accuracy_reward
+  - finish_line_accuracy_outcome
+  - taper_accuracy_outcome
+  - autonomous_preparation_success
+  - manuscript_accuracy_endpoint
