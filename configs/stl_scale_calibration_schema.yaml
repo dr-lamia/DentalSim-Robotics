@@ -1,0 +1,17 @@
+schema_version: 1
+calibration_type: stl_physical_scale
+required:
+  - source_id
+  - mesh_sha256
+  - native_distance
+  - known_distance_mm
+  - measurement_description
+  - measured_by
+  - measurement_date
+derived:
+  scale_mm_per_native_unit: known_distance_mm / native_distance
+rules:
+  native_distance_positive: true
+  known_distance_mm_positive: true
+  exact_mesh_hash_required: true
+  physical_scale_required_before_mm_accuracy_metrics: true
