@@ -1,0 +1,19 @@
+{
+  "fdi": 15,
+  "reconstruction_type": "AnatomicCrown",
+  "coordinate_mapping": "design_to_scan = inverse(MatrixToScanDataFiles), row-vector convention",
+  "margin_points": 314,
+  "margin_scan_bounds_mm": [[-52.878522, -4.931835, 15.072357], [-47.230201, -2.887093, 23.069966]],
+  "design_scan_bounds_mm": [[-54.110246, -4.931834, 13.499927], [-46.008783, 3.325955, 23.165682]],
+  "anatomical_start_aligned_bounds_mm": [[-54.576775, -5.752414, 11.970121], [-44.759281, 2.331725, 26.505012]],
+  "prepared_arch_roi_bounds_mm": [[-55.220367, -3.904318, 12.403324], [-44.907219, 4.392239, 24.2964]],
+  "prepared_arch_roi_faces": 37363,
+  "icp_cost": 1.9404448148957563,
+  "aligned_to_design_nearest_distance_mm": {
+    "median": 0.8990307143177271,
+    "mean": 1.1062280275009297,
+    "p95": 2.7530464638517027
+  },
+  "status": "engineering_alignment_ready_exact_preparation_segmentation_pending",
+  "warning": "Do not treat prepared_arch_roi as an exact preparation mesh until the stump surface is segmented and visually verified."
+}
