@@ -1,0 +1,16 @@
+{
+  "reviewer_id": "REVIEWER_PSEUDONYM",
+  "reviewer_role": "calibrated_prosthodontist",
+  "mesh_sha256": "PASTE_SHA256_OF_REVIEWED_STL",
+  "decision": "accept",
+  "criteria": {
+    "correct_tooth_identity": true,
+    "complete_visible_boundary": true,
+    "no_adjacent_tooth_contamination": true,
+    "no_gingival_contamination": true,
+    "complete_axial_surfaces": true,
+    "complete_occlusal_surface": true,
+    "suitable_for_geometric_scoring": true
+  },
+  "comments": ""
+}
