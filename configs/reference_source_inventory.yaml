@@ -25,9 +25,11 @@ sources:
     local_geometry_assessment:
       connected_components: 1
       watertight: false
-      extents_mm: [60.5775108337, 54.5170957679, 55.7071475983]
-      interpretation: larger_scan_source_not_isolated_single_tooth
-    status: extraction_required
+      native_extents: [60.5775108337, 54.5170957679, 55.7071475983]
+      visual_interpretation: isolated_preparation_object_likely
+      physical_unit_status: unverified
+      note: STL does not encode a unit field; do not interpret native coordinates as mm until scale is calibrated.
+    status: scale_calibration_required
 
   - source_id: prep_all_ceramic_01
     source_type: direct_preparation_scan_stl
@@ -39,9 +41,11 @@ sources:
     local_geometry_assessment:
       connected_components: 1
       watertight: false
-      extents_mm: [39.9029407501, 55.9642486048, 41.4051418304]
-      interpretation: larger_scan_source_not_isolated_single_tooth
-    status: extraction_required
+      native_extents: [39.9029407501, 55.9642486048, 41.4051418304]
+      visual_interpretation: isolated_preparation_object_likely
+      physical_unit_status: unverified
+      note: STL does not encode a unit field; do not interpret native coordinates as mm until scale is calibrated.
+    status: scale_calibration_required
 
   - source_id: prep_pin_modified_three_quarter_01
     source_type: direct_preparation_scan_stl
