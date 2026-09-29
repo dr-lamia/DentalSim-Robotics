@@ -1,0 +1,31 @@
+schema_version: 1
+run_type: rl_training
+modes:
+  - ppo_random_safety
+  - ppo_random_accuracy
+  - bc_initialized_ppo_safety
+  - bc_initialized_ppo_accuracy
+required:
+  - run_id
+  - mode
+  - repo_commit
+  - rl_config
+  - rl_config_sha256
+  - policy_init
+  - safety_gate
+  - target_gate
+  - output_checkpoint
+  - output_checkpoint_sha256
+rules:
+  safety_modes_require:
+    - forced_contact_verified
+  accuracy_modes_require:
+    - forced_contact_verified
+    - validated_target_available
+  bc_initialized_modes_require:
+    - bc_run_manifest
+    - bc_torchscript_hash
+  protected_contact:
+    terminate_immediately: true
+    reward_penalty_required: true
+  geometric_reward_without_validated_target_forbidden: true
