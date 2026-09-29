@@ -1,0 +1,54 @@
+schema_version: 1
+dataset: dental_crown_prep_teleop
+storage: hdf5
+unit_conventions:
+  translation: m
+  rotation: rad
+  dental_metrics: mm
+episode:
+  required_fields:
+    - episode_id
+    - tooth_id
+    - operator_id
+    - mode
+    - success
+    - termination_reason
+    - timestamps_s
+    - observations
+    - actions
+  observations:
+    bur_pose:
+      shape: [N, 7]
+      order: [x_m, y_m, z_m, qx, qy, qz, qw]
+    bur_twist:
+      shape: [N, 6]
+      order: [vx, vy, vz, wx, wy, wz]
+    target_relative_pose:
+      shape: [N, 7]
+    adjacent_min_distance_mm:
+      shape: [N]
+    protected_contact:
+      shape: [N]
+    previous_action:
+      shape: [N, 6]
+  actions:
+    delta_pose:
+      shape: [N, 6]
+      order: [dx_m, dy_m, dz_m, droll_rad, dpitch_rad, dyaw_rad]
+  optional:
+    camera_overview_rgb: [N, H, W, 3]
+    camera_occlusal_rgb: [N, H, W, 3]
+    camera_buccal_rgb: [N, H, W, 3]
+    notes: string
+metadata:
+  required:
+    - dataset_version
+    - created_utc
+    - project
+    - scene_id
+    - source_case_status
+    - clinical_ground_truth_status
+constraints:
+  max_translation_m_per_step: 0.00025
+  max_rotation_rad_per_step: 0.03490658503988659
+  success_requires_zero_protected_contacts: true
