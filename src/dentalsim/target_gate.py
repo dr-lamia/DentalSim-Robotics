@@ -1,7 +1,12 @@
-"""Read-only scientific gate for target-dependent rewards.
+"""Read-only scientific gates for target-dependent rewards.
 
-Supports both the original validated-target manifest contract and the newer
-hash-locked approval manifest. The gate remains closed by default.
+Two manifest contracts are supported:
+- geometric_rewards_enabled(): legacy validated-target contract requiring two
+  distinct reviewers.
+- target_accuracy_rewards_enabled(): newer promotion-manifest contract requiring
+  an explicit accuracy unlock and locked mesh hash.
+
+Both gates are closed by default.
 """
 from __future__ import annotations
 
@@ -11,10 +16,7 @@ from typing import Any
 
 
 def load_validated_target_manifest(manifest_path: str | Path | None) -> dict[str, Any] | None:
-    """Load a target manifest safely.
-
-    Returns None for missing, unreadable, malformed, or non-object JSON.
-    """
+    """Load a target manifest safely."""
     if manifest_path is None:
         return None
     path = Path(manifest_path)
@@ -45,14 +47,7 @@ def _reviewer_ids(data: dict[str, Any]) -> list[str]:
 
 
 def geometric_rewards_enabled(manifest_path: str | Path | None) -> bool:
-    """Return True only for a valid, independently reviewed target manifest.
-
-    Compatible with:
-    1) the original contract:
-       status, target_file, sha256, reviewers, review_count
-    2) the newer approval contract:
-       status, mesh_file, mesh_sha256, reviewers, accuracy_rewards_unlocked
-    """
+    """Legacy gate: require a validated target and two distinct reviewers."""
     data = load_validated_target_manifest(manifest_path)
     if data is None or data.get("status") != "validated_target":
         return False
@@ -73,14 +68,22 @@ def geometric_rewards_enabled(manifest_path: str | Path | None) -> bool:
     except Exception:
         return False
 
-    # New manifests explicitly carry this lock. Old manifests predate it, so
-    # absence is accepted for backward compatibility.
-    if "accuracy_rewards_unlocked" in data and data.get("accuracy_rewards_unlocked") is not True:
-        return False
-
     return True
 
 
 def target_accuracy_rewards_enabled(manifest_path: str | Path | None) -> bool:
-    """Alias for the stricter geometric reward gate."""
-    return geometric_rewards_enabled(manifest_path)
+    """New promotion-manifest gate.
+
+    The promotion script is responsible for creating this manifest only after
+    expert review succeeds. Runtime code therefore checks the immutable
+    promotion signals: validated status, explicit unlock, and a locked mesh
+    hash. It does not reinterpret the reviews at runtime.
+    """
+    data = load_validated_target_manifest(manifest_path)
+    if data is None:
+        return False
+    return (
+        data.get("status") == "validated_target"
+        and data.get("accuracy_rewards_unlocked") is True
+        and bool(data.get("mesh_sha256") or data.get("sha256"))
+    )
