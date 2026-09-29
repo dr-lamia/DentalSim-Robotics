@@ -1,0 +1,21 @@
+schema_version: 1
+case_id: 2024-08-15_00241-004
+fdi_tooth: 15
+reconstruction_type: AnatomicCrown
+source: user_google_drive_single_crown_dataset
+role: engineering_validation_case
+files:
+  prepared_arch: upper.ply
+  antagonist_arch: lower.ply
+  anatomical_tooth_model: tooth_model.obj
+  crown_design: design.stl
+  geometry_metadata: constructionInfo
+  scan_metadata: scanInfo
+conversion:
+  start_mesh: derive_from_anatomical_tooth_model_after_case_alignment
+  target_mesh: segment_prepared_tooth_from_prepared_arch
+  protected_anatomy: crop_adjacent_teeth_from_prepared_arch
+  crown_design_role: restoration_fit_reference_not_preparation_target
+scientific_status:
+  matches_original_central_incisor_protocol: false
+  acceptable_for_engineering_pipeline_validation: true
