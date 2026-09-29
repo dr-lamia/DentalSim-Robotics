@@ -1,0 +1,64 @@
+schema_version: 1
+project: dentalsim_robotics
+task: maxillary_central_incisor_full_crown_prep
+units: mm
+
+observations:
+  - bur_pose_6d
+  - bur_velocity_6d
+  - target_relative_pose
+  - signed_distance_to_target_surface
+  - remaining_tooth_volume_ratio
+  - adjacent_tooth_min_distance
+  - pulp_min_distance
+  - previous_action
+
+actions:
+  type: relative_end_effector_pose
+  dof: 6
+  limits:
+    translation_mm_per_step: 0.25
+    rotation_deg_per_step: 2.0
+
+reward:
+  target_surface_error:
+    weight: 4.0
+    objective: minimize
+  reduction_accuracy:
+    weight: 2.0
+    objective: maximize
+  taper_accuracy:
+    weight: 1.5
+    objective: maximize
+  margin_accuracy:
+    weight: 2.0
+    objective: maximize
+  smoothness:
+    weight: 0.5
+    objective: maximize
+  adjacent_collision:
+    weight: -10.0
+    objective: avoid
+  pulp_risk:
+    weight: -10.0
+    objective: avoid
+  over_reduction:
+    weight: -4.0
+    objective: minimize
+  undercut:
+    weight: -3.0
+    objective: avoid
+  action_jerk:
+    weight: -0.2
+    objective: minimize
+
+safety_gates:
+  adjacent_collision_count_max: 0
+  pulp_distance_min_mm: 0.5
+  catastrophic_over_reduction_max_mm: 1.0
+
+success_thresholds:
+  mean_surface_deviation_mm_max: 0.30
+  p95_surface_deviation_mm_max: 0.60
+  finish_line_mean_deviation_mm_max: 0.40
+  taper_error_deg_max: 5.0
