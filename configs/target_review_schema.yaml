@@ -1,37 +1,28 @@
 schema_version: 1
-target_id: case25_fdi25_v2
-candidate_file: fdi25_visible_preparation_candidate_v2_REQUIRES_EXPERT_REVIEW.stl
-required_reviewer_count: 2
-reviewer_role: calibrated_prosthodontist
+review_type: dental_preparation_target_mesh
+required_fields:
+  - reviewer_id
+  - reviewer_role
+  - review_date
+  - case_id
+  - fdi
+  - candidate_version
+  - mesh_sha256
+  - criteria
+  - overall_decision
 criteria:
-  - id: correct_tooth_identity
-    question: Correct tooth identity (FDI 25)?
-    required: true
-  - id: complete_visible_boundary
-    question: Complete visible circumferential preparation boundary?
-    required: true
-  - id: no_adjacent_tooth_contamination
-    question: No adjacent-tooth contamination?
-    required: true
-  - id: no_gingival_contamination
-    question: No gingival contamination requiring removal?
-    required: true
-  - id: complete_axial_surfaces
-    question: Complete axial prepared surfaces?
-    required: true
-  - id: complete_occlusal_surface
-    question: Complete occlusal prepared surface?
-    required: true
-  - id: suitable_for_geometric_scoring
-    question: Suitable as geometric target for simulator scoring?
-    required: true
-decision_values:
-  - accept
-  - accept_after_edit
-  - reject
-promotion:
-  require_all_criteria_true: true
-  accepted_decisions:
-    - accept
-  require_same_mesh_checksum_across_reviews: true
-  promoted_filename: fdi25_validated_target.stl
+  correct_tooth_identity: {allowed: [pass, fail]}
+  complete_visible_circumferential_boundary: {allowed: [pass, fail]}
+  no_adjacent_tooth_contamination: {allowed: [pass, fail]}
+  no_unacceptable_gingival_contamination: {allowed: [pass, fail]}
+  axial_preparation_complete: {allowed: [pass, fail]}
+  occlusal_preparation_complete: {allowed: [pass, fail]}
+  suitable_for_geometric_target_scoring: {allowed: [pass, fail]}
+overall_decision:
+  allowed: [accept, accept_after_edit, reject]
+promotion_rule:
+  minimum_independent_reviewers: 2
+  require_distinct_reviewer_ids: true
+  require_same_mesh_sha256: true
+  require_all_criteria_pass: true
+  require_all_decisions_accept: true
