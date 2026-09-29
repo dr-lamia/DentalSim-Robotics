@@ -49,7 +49,14 @@ def test_accuracy_reward_gate_defaults_closed(tmp_path):
     assert not target_accuracy_rewards_enabled(None)
     assert not target_accuracy_rewards_enabled(tmp_path/"missing.json")
 
-def test_accuracy_reward_gate_opens_only_for_validated_manifest(tmp_path):
-    p=tmp_path/"v.json"
-    p.write_text(json.dumps({"status":"validated_target","accuracy_rewards_unlocked":True,"mesh_sha256":"abc"}))
+def test_accuracy_reward_gate_opens_for_expert_supervised_technical_qa_target(tmp_path):
+    p = tmp_path / "v.json"
+    p.write_text(json.dumps({
+        "status": "validated_target",
+        "mesh_file": "target.stl",
+        "mesh_sha256": "abc",
+        "source_expert_supervised": True,
+        "technical_geometry_qa_pass": True,
+        "accuracy_rewards_unlocked": True
+    }))
     assert target_accuracy_rewards_enabled(p)
