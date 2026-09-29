@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.DS_Store
+runs/
+*.hdf5
+*.pt
+*.pth
+*.onnx
+*.usd
+*.usda
+*.usdc
