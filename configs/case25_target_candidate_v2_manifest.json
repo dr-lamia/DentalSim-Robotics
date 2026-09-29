@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "case_id": "2025-12-16_02241-018",
+  "fdi": 25,
+  "reconstruction_type": "AnatomicCrown",
+  "candidate_version": 2,
+  "mesh_file": "fdi25_visible_preparation_candidate_v2_REQUIRES_EXPERT_REVIEW.stl",
+  "sha256": "400972eb83df4f34510863cd023e04d453ad843eda96b4a4169da9f7d71a91e2",
+  "file_size_bytes": 643284,
+  "faces": 12864,
+  "vertices": 6557,
+  "body_count": 1,
+  "watertight": false,
+  "bounds_mm": [
+    [-27.018318, -16.041147, 2.037288],
+    [-19.139297, -10.0098, 6.886887]
+  ],
+  "status": "expert_review_required_before_ground_truth"
+}
