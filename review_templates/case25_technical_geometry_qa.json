@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "operator_id": "REPLACE_WITH_REVIEWER_PSEUDONYM",
+  "review_date": "YYYY-MM-DD",
+  "case_id": "2025-12-16_02241-018",
+  "fdi": 25,
+  "candidate_version": 2,
+  "mesh_sha256": "400972eb83df4f34510863cd023e04d453ad843eda96b4a4169da9f7d71a91e2",
+  "source_expert_supervised": true,
+  "criteria": {
+    "correct_tooth_identity": "REVIEW_REQUIRED",
+    "complete_prepared_surface": "REVIEW_REQUIRED",
+    "axial_surfaces_complete": "REVIEW_REQUIRED",
+    "occlusal_surface_complete": "REVIEW_REQUIRED",
+    "no_adjacent_tooth_contamination": "REVIEW_REQUIRED",
+    "no_unacceptable_gingival_contamination": "REVIEW_REQUIRED",
+    "scale_verified": "REVIEW_REQUIRED",
+    "orientation_verified": "REVIEW_REQUIRED",
+    "suitable_as_reference_geometry": "REVIEW_REQUIRED"
+  },
+  "overall_decision": "REVIEW_REQUIRED",
+  "comments": ""
+}
