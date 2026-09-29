@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use DentalSim-Robotics in research, please cite this repository."
+title: "DentalSim-Robotics"
+type: software
+authors:
+  - family-names: "ElFadaly"
+    given-names: "Lamiaa"
+repository-code: "https://github.com/dr-lamia/DentalSim-Robotics"
+license: "MIT"
+version: "0.1.0"
+date-released: "2026-09-29"
