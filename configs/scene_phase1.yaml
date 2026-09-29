@@ -1,0 +1,61 @@
+schema_version: 1
+scene_id: crown_prep_phase1_single_incisor
+units: mm
+world:
+  up_axis: z
+  gravity_m_s2: -9.81
+  origin_definition: target_tooth_centroid
+
+objects:
+  target_tooth:
+    role: editable_workpiece
+    mesh: assets/tooth_11_unprepared.stl
+    pose_mm_deg: [0, 0, 0, 0, 0, 0]
+  ideal_preparation:
+    role: reference_only
+    mesh: assets/tooth_11_target_prep.stl
+    visible_by_default: false
+    collision_enabled: false
+    pose_mm_deg: [0, 0, 0, 0, 0, 0]
+  adjacent_tooth_mesial:
+    role: protected_anatomy
+    mesh: assets/tooth_12.stl
+    pose_mm_deg: [-8.5, 0, 0, 0, 0, 0]
+  adjacent_tooth_distal:
+    role: protected_anatomy
+    mesh: assets/tooth_21.stl
+    pose_mm_deg: [8.5, 0, 0, 0, 0, 0]
+  bur:
+    role: controlled_tool
+    mesh: assets/diamond_bur.stl
+    radius_mm: 0.8
+    active_length_mm: 8.0
+    start_pose_mm_deg: [0, -12, 12, 0, 0, 0]
+
+safety:
+  adjacent_clearance_mm: 0.30
+  pulp_clearance_mm: 0.50
+  max_translation_mm_per_step: 0.25
+  max_rotation_deg_per_step: 2.0
+  emergency_stop_on_protected_contact: true
+
+baseline_path:
+  type: finish_line_ring
+  center_mm: [0, 0, -2.0]
+  radius_x_mm: 4.0
+  radius_y_mm: 3.2
+  height_mm: 0.0
+  points: 72
+  approach_height_mm: 5.0
+  retreat_height_mm: 6.0
+
+cameras:
+  overview:
+    eye_mm: [35, -55, 35]
+    target_mm: [0, 0, 2]
+  occlusal:
+    eye_mm: [0, 0, 55]
+    target_mm: [0, 0, 0]
+  labial:
+    eye_mm: [0, -55, 10]
+    target_mm: [0, 0, 1]
