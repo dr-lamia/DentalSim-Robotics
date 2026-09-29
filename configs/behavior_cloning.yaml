@@ -1,0 +1,55 @@
+schema_version: 1
+policy: dental_bc_v1
+task: crown_prep_teleop_imitation
+input_dataset:
+  format: hdf5
+  schema: configs/teleop_dataset_schema.yaml
+  required_mode: teleop
+  exclude_if:
+    - protected_contact_any
+    - invalid_action_bounds
+features:
+  order:
+    - bur_pose
+    - bur_twist
+    - target_relative_pose
+    - adjacent_min_distance_mm
+    - previous_action
+  dimensions:
+    bur_pose: 7
+    bur_twist: 6
+    target_relative_pose: 7
+    adjacent_min_distance_mm: 1
+    previous_action: 6
+  total_state_dim: 27
+actions:
+  name: delta_pose
+  dim: 6
+  bounds:
+    translation_m: 0.00025
+    rotation_rad: 0.03490658503988659
+model:
+  family: mlp
+  hidden_dims: [256, 256, 128]
+  activation: relu
+  dropout: 0.10
+training:
+  seed: 42
+  batch_size: 128
+  epochs: 100
+  learning_rate: 0.0003
+  weight_decay: 0.000001
+  validation_fraction: 0.15
+  split_unit: tooth_id
+  early_stopping_patience: 12
+  loss: smooth_l1
+normalization:
+  states: standardize_from_train_split
+  actions: none
+export:
+  format: torchscript
+  filename: dental_bc_v1.pt
+scientific_constraints:
+  case15_accuracy_ground_truth_validated: false
+  allow_case15_for_motion_safety_pretraining: true
+  allow_case15_for_surface_accuracy_claims: false
