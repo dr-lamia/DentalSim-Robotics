@@ -1,0 +1,21 @@
+case_id: 2025-12-16_02241-018
+fdi: 25
+reconstruction_type: AnatomicCrown
+candidate_version: 2
+margin_points: 297
+candidate_faces: 12864
+candidate_vertices: 6557
+candidate_body_count: 1
+candidate_watertight: false
+candidate_bounds_mm:
+  min: [-27.018318, -16.041147, 2.037288]
+  max: [-19.139297, -10.0098, 6.886887]
+axis_insertion_scan_info: [-0.0355175334, -0.1093117252, -0.9933727657]
+software_axis: [0.0, 0.0, 1.0]
+axis_opposition_angle_deg: 173.4
+margin_to_candidate_nearest_vertex_mm:
+  median: 1.6472
+  p95: 2.2285
+  max: 2.2670
+  min: 1.2996
+status: expert_review_required_before_ground_truth
