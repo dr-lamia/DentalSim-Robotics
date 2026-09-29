@@ -12,8 +12,18 @@
   "body_count": 1,
   "watertight": false,
   "bounds_mm": [
-    [-27.018318, -16.041147, 2.037288],
-    [-19.139297, -10.0098, 6.886887]
+    [
+      -27.018318,
+      -16.041147,
+      2.037288
+    ],
+    [
+      -19.139297,
+      -10.0098,
+      6.886887
+    ]
   ],
-  "status": "expert_review_required_before_ground_truth"
+  "status": "technical_geometry_qa_required",
+  "source_expert_supervised": true,
+  "source_supervision_note": "Clinical preparation completed under expert prosthodontic supervision; remaining gate is technical geometry QA of the extracted reference mesh."
 }
