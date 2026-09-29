@@ -1,0 +1,89 @@
+schema_version: 1
+source_collection: expert_supervised_preparation_library
+privacy_note: >
+  Google Drive file IDs and URLs are intentionally omitted from this public
+  repository. Source files remain in the private/shared Drive collection.
+all_source_cases_expert_supervised: true
+
+sources:
+  - source_id: case25_exocad_v2
+    source_type: exocad_case_extracted_candidate
+    preparation_type: full_coverage_crown
+    tooth_region: maxillary_premolar
+    fdi: 25
+    file_label: case25 v2 preparation candidate
+    status: objective_technical_qa_pass_visual_confirmation_pending
+    validated_target: false
+
+  - source_id: prep_full_veneer_01
+    source_type: direct_preparation_scan_stl
+    preparation_type: full_coverage_crown
+    tooth_region: unspecified
+    file_label: Full veneer crown preparation.stl
+    file_size_bytes: 25969384
+    source_expert_supervised: true
+    local_geometry_assessment:
+      connected_components: 1
+      watertight: false
+      extents_mm: [60.5775108337, 54.5170957679, 55.7071475983]
+      interpretation: larger_scan_source_not_isolated_single_tooth
+    status: extraction_required
+
+  - source_id: prep_all_ceramic_01
+    source_type: direct_preparation_scan_stl
+    preparation_type: full_coverage_crown
+    tooth_region: unspecified
+    file_label: All ceramic crown preparation.stl
+    file_size_bytes: 13191484
+    source_expert_supervised: true
+    local_geometry_assessment:
+      connected_components: 1
+      watertight: false
+      extents_mm: [39.9029407501, 55.9642486048, 41.4051418304]
+      interpretation: larger_scan_source_not_isolated_single_tooth
+    status: extraction_required
+
+  - source_id: prep_pin_modified_three_quarter_01
+    source_type: direct_preparation_scan_stl
+    preparation_type: partial_coverage_crown
+    tooth_region: unspecified
+    file_label: Pin modified three-quarter crown preparation.stl
+    file_size_bytes: 12794434
+    source_expert_supervised: true
+    status: geometry_assessment_pending
+
+  - source_id: prep_seven_eighth_01
+    source_type: direct_preparation_scan_stl
+    preparation_type: partial_coverage_crown
+    tooth_region: unspecified
+    file_label: Seven-eighth crown preparation.stl
+    file_size_bytes: 21029334
+    source_expert_supervised: true
+    status: geometry_assessment_pending
+
+  - source_id: prep_three_quarter_molar_01
+    source_type: direct_preparation_scan_stl
+    preparation_type: three_quarter_crown
+    tooth_region: maxillary_molar
+    file_label: Maxillary Molar three quarter Crown preparation.stl
+    file_size_bytes: 18533184
+    source_expert_supervised: true
+    status: geometry_assessment_pending
+
+  - source_id: prep_three_quarter_premolar_01
+    source_type: direct_preparation_scan_stl
+    preparation_type: three_quarter_crown
+    tooth_region: maxillary_premolar
+    file_label: Maxillary premolar three quarter crown preparation.stl
+    file_size_bytes: 17561984
+    source_expert_supervised: true
+    status: geometry_assessment_pending
+
+  - source_id: prep_three_quarter_anterior_01
+    source_type: direct_preparation_scan_stl
+    preparation_type: three_quarter_crown
+    tooth_region: anterior
+    file_label: Anterior Three quarter crown preparation .stl
+    file_size_bytes: 15475784
+    source_expert_supervised: true
+    status: geometry_assessment_pending
