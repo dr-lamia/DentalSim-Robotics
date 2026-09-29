@@ -1,0 +1,24 @@
+schema_version: 1
+session_type: dentist_teleoperation
+required:
+  - session_id
+  - operator_id
+  - operator_role
+  - run_date
+  - machine_label
+  - isaac_version
+  - repo_commit
+  - scene_id
+  - tooth_id
+  - input_mode
+  - hdf5_file
+  - validation_report
+rules:
+  operator_role_allowed:
+    - dentist
+    - prosthodontist
+  input_mode_allowed:
+    - teleop
+  expert_demo_requires_human_operator: true
+  scripted_or_mock_must_not_be_labelled_expert: true
+  success_requires_zero_protected_contacts: true
