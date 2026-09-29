@@ -1,0 +1,101 @@
+schema_version: 1
+profile: dental_crown_prep_ppo_v1
+status: scaffold_only_until_validated_target_and_isaac_runner
+
+workflow:
+  scene: case15_engineering_validation
+  policy_family: ppo
+  trainer_target: rsl_rl
+  initialization:
+    supported:
+      - random
+      - behavior_cloning_checkpoint
+    default: behavior_cloning_checkpoint
+
+observation:
+  dim: 27
+  order:
+    - bur_pose[7]
+    - bur_twist[6]
+    - target_relative_pose[7]
+    - adjacent_min_distance_mm[1]
+    - previous_action[6]
+
+action:
+  dim: 6
+  order:
+    - dx_m
+    - dy_m
+    - dz_m
+    - droll_rad
+    - dpitch_rad
+    - dyaw_rad
+  clamp:
+    translation_m: 0.00025
+    rotation_rad: 0.03490658503988659
+
+reward:
+  progress_to_target:
+    weight: 4.0
+    enabled_when_validated_target_available: true
+  reduction_accuracy:
+    weight: 2.0
+    enabled_when_validated_target_available: true
+  finish_line_accuracy:
+    weight: 2.0
+    enabled_when_validated_target_available: true
+  taper_accuracy:
+    weight: 1.5
+    enabled_when_validated_target_available: true
+  smooth_motion:
+    weight: 0.5
+    enabled: true
+  action_jerk:
+    weight: -0.2
+    enabled: true
+  protected_contact:
+    weight: -10.0
+    enabled: true
+  adjacent_clearance_violation:
+    weight: -5.0
+    enabled: true
+  catastrophic_over_reduction:
+    weight: -10.0
+    enabled_when_validated_target_available: true
+
+termination:
+  protected_contact: immediate_failure
+  action_limit_violation: immediate_failure
+  max_steps: 2000
+  task_complete:
+    enabled_when_validated_target_available: true
+
+training:
+  num_envs: 256
+  rollout_steps: 32
+  gamma: 0.99
+  gae_lambda: 0.95
+  learning_rate: 0.0003
+  clip_param: 0.2
+  entropy_coef: 0.01
+  value_loss_coef: 1.0
+  max_grad_norm: 1.0
+  epochs: 1000
+  seed: 42
+
+evaluation:
+  episodes: 100
+  report:
+    - success_rate
+    - protected_contact_rate
+    - mean_episode_steps
+    - mean_action_jerk
+    - mean_surface_deviation_mm
+    - p95_surface_deviation_mm
+    - finish_line_deviation_mm
+    - taper_error_deg
+
+scientific_gate:
+  allow_surface_reward_with_case15_current_candidate: false
+  allow_safety_motion_rl_with_case15: true
+  require_validated_target_for_preparation_accuracy_claims: true
