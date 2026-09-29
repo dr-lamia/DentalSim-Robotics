@@ -55,8 +55,11 @@ def test_full_artifacts_advance_to_hybrid_accuracy_ready(tmp_path):
     target = tmp_path / "target.json"
     target.write_text(json.dumps({
         "status": "validated_target",
-        "accuracy_rewards_unlocked": True,
-        "mesh_sha256": "abc"
+        "mesh_file": "target.stl",
+        "mesh_sha256": "abc",
+        "source_expert_supervised": True,
+        "technical_geometry_qa_pass": True,
+        "accuracy_rewards_unlocked": True
     }))
     teleop = tmp_path / "teleop.json"
     teleop.write_text(json.dumps({
