@@ -1,0 +1,23 @@
+{
+  "status": "candidate_only_not_ground_truth",
+  "method": "PCA plane from transformed 314-point preparation margin; select prepared-arch faces whose projected centers fall inside a 0.15 mm buffered margin polygon and on the crown/stump side of the margin plane.",
+  "candidate": {
+    "faces": 15310,
+    "vertices": 7883,
+    "body_count": 1,
+    "watertight": false,
+    "bounds_mm": [
+      [-52.909111, -2.951745, 13.821714],
+      [-46.891888, 2.640787, 23.242382]
+    ]
+  },
+  "margin_to_full_arch_nearest_vertex_mm": {
+    "median": 2.192819718727387,
+    "p95": 3.4065948059280453,
+    "max": 3.714922755222219
+  },
+  "qa_threshold_median_mm": 0.5,
+  "qa_gate_passed": false,
+  "reason": "The transformed exocad margin remains too far from the scanned arch surface to certify exact stump boundary correspondence.",
+  "visual_evidence": "The exocad preparation-margin autosave screenshot clearly identifies the prepared tooth 15, but screenshot evidence alone does not establish exact 3D boundary correspondence."
+}
