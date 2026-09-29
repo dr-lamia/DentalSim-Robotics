@@ -1,0 +1,19 @@
+{
+  "fdi": 25,
+  "source_case": "2025-12-16_02241-018",
+  "matrix_to_scan_data_files": "identity",
+  "method": "upper-jaw faces inside crown footprint and <=0.8 mm nearest crown-vertex distance; largest connected component retained",
+  "threshold_mm": 0.8,
+  "threshold_status": "engineering selection from observed distance distribution; not a clinical tolerance",
+  "candidate_faces": 14809,
+  "candidate_vertices": 7694,
+  "candidate_components": 1,
+  "candidate_watertight": false,
+  "candidate_bounds_mm": [[-27.344439,-16.817062,2.084605],[-18.860987,-8.587468,6.886887]],
+  "candidate_to_crown_vertex_distance_mm": {
+    "median": 0.39116728113775795,
+    "p95": 0.7776253816100469,
+    "max": 0.923423306324058
+  },
+  "status": "expert_review_required_before_ground_truth"
+}
