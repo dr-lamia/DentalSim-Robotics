@@ -1,0 +1,25 @@
+schema_version: 1
+run_type: isaac_case15_forced_contact
+required:
+  - run_id
+  - operator_id
+  - run_date
+  - machine_label
+  - isaac_version
+  - repo_commit
+  - asset_package_sha256
+  - command
+  - result_json
+  - outcome
+outcome:
+  allowed:
+    - pass
+    - fail
+rules:
+  pass_requires:
+    - contact_detected_true
+    - safety_rollout_accepted_false
+    - verifier_pass_true
+notes:
+  - Do not enter a pass manually if the verifier failed.
+  - Preserve the raw forced_contact_result.json as the source artifact.
