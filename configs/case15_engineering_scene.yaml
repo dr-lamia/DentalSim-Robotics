@@ -1,0 +1,65 @@
+schema_version: 1
+scene_id: case15_engineering_validation
+purpose: nvidia_isaac_scene_and_collision_debugging_only
+clinical_ground_truth_status: not_validated
+
+case:
+  id: 2024-08-15_00241-004
+  fdi: 15
+  reconstruction_type: AnatomicCrown
+
+assets:
+  anatomical_start:
+    file: assets/case15/fdi15_anatomical_start_aligned.stl
+    role: editable_workpiece
+  prepared_candidate:
+    file: assets/case15/prepared_stump_candidate_NOT_GROUND_TRUTH.stl
+    role: engineering_reference_only
+    collision_enabled: false
+  protected_side_A:
+    file: assets/case15/protected_side_A_roi.ply
+    role: protected_anatomy_context
+  protected_side_B:
+    file: assets/case15/protected_side_B_roi.ply
+    role: protected_anatomy_context
+  crown_design:
+    file: assets/case15/fdi15_design_scan_frame.stl
+    role: restoration_reference
+    collision_enabled: false
+
+task:
+  enabled:
+    - scene_import
+    - camera_validation
+    - bur_pose_control
+    - protected_contact_detection
+    - reset_validation
+    - trajectory_recording
+  disabled_until_ground_truth_resolved:
+    - final_surface_accuracy_reward
+    - preparation_success_claim
+    - rl_training_on_surface_target
+    - manuscript_accuracy_outcomes
+
+bur:
+  radius_mm: 0.8
+  active_length_mm: 8.0
+  action:
+    type: relative_end_effector_pose
+    dof: 6
+    max_translation_mm_per_step: 0.25
+    max_rotation_deg_per_step: 2.0
+
+safety:
+  stop_on_protected_contact: true
+  protected_contact_count_max: 0
+
+cameras:
+  - overview
+  - occlusal
+  - buccal
+
+qa:
+  segmentation_gate_passed: false
+  margin_to_arch_median_mm: 2.192819718727387
+  segmentation_gate_threshold_mm: 0.5
