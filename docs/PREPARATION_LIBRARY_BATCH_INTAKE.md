@@ -11,10 +11,14 @@ For each file, the repository now records:
 - face count
 - connected-component count
 - watertight status
-- XYZ extents
-- surface area
+- native-coordinate XYZ extents
+- surface area in native coordinate units
 
 ## What is not established
+
+The batch intake does **not** assume that native STL coordinates are millimetres. Physical scale remains unverified until a hash-locked calibration is available.
+
+The full-coverage source renders visually resemble isolated preparation objects, so they may not require tooth extraction. They currently require scale calibration plus visual geometry QA.
 
 The batch intake does **not** certify that any STL is:
 - an isolated single tooth
