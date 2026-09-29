@@ -40,9 +40,9 @@ def assess(path: Path, source_id: str, expert_supervised: bool) -> dict:
             "connected_components": int(len(components)),
             "largest_component_faces": int(component_faces[0]) if component_faces else 0,
             "watertight": bool(mesh.is_watertight),
-            "bounds_mm": mesh.bounds.tolist(),
-            "extents_mm": mesh.extents.tolist(),
-            "surface_area_mm2": float(mesh.area),
+            "bounds_native": mesh.bounds.tolist(),
+            "extents_native": mesh.extents.tolist(),
+            "surface_area_native2": float(mesh.area),
         },
         "status": "geometry_described_review_scope_required",
         "important_note": (
