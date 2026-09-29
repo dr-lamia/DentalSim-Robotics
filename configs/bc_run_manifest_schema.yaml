@@ -1,0 +1,21 @@
+schema_version: 1
+run_type: behavior_cloning_training
+required:
+  - run_id
+  - repo_commit
+  - config_file
+  - training_hdf5
+  - training_hdf5_sha256
+  - tooth_split
+  - hyperparameters
+  - checkpoint
+  - checkpoint_sha256
+  - torchscript
+  - torchscript_sha256
+  - evaluation_report
+rules:
+  human_expert_only: true
+  scripted_or_mock_forbidden: true
+  split_unit: tooth_id
+  frame_level_random_split_forbidden: true
+  protected_contact_success_forbidden: true
