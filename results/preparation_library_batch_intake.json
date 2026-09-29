@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source_collection": "expert_supervised_preparation_library",
   "source_expert_supervised": true,
-  "assessment_note": "Geometry-only intake. No source is auto-certified as an isolated preparation target.",
+  "assessment_note": "Geometry-only intake in native STL units. No source is auto-certified as an isolated preparation target or assumed to be millimetres.",
   "sources": [
     {
       "source_id": "prep_full_veneer_01",
@@ -13,9 +13,14 @@
       "faces": 519386,
       "connected_components": 1,
       "watertight": false,
-      "extents_mm": [60.577510833740234, 54.5170957678929, 55.7071475982666],
-      "surface_area_mm2": 9929.80605106016,
-      "status": "geometry_described_review_scope_required"
+      "status": "geometry_described_review_scope_required",
+      "extents_native": [
+        60.577510833740234,
+        54.5170957678929,
+        55.7071475982666
+      ],
+      "surface_area_native2": 9929.80605106016,
+      "physical_unit_status": "unverified"
     },
     {
       "source_id": "prep_all_ceramic_01",
@@ -26,9 +31,14 @@
       "faces": 263828,
       "connected_components": 1,
       "watertight": false,
-      "extents_mm": [39.90294075012207, 55.96424860483967, 41.405141830444336],
-      "surface_area_mm2": 5375.055932163723,
-      "status": "geometry_described_review_scope_required"
+      "status": "geometry_described_review_scope_required",
+      "extents_native": [
+        39.90294075012207,
+        55.96424860483967,
+        41.405141830444336
+      ],
+      "surface_area_native2": 5375.055932163723,
+      "physical_unit_status": "unverified"
     },
     {
       "source_id": "prep_pin_modified_three_quarter_01",
@@ -40,9 +50,14 @@
       "connected_components": 2,
       "largest_component_faces": 255880,
       "watertight": false,
-      "extents_mm": [35.93867588043213, 52.672307944856584, 38.04225730895996],
-      "surface_area_mm2": 4893.089393477813,
-      "status": "geometry_described_review_scope_required"
+      "status": "geometry_described_review_scope_required",
+      "extents_native": [
+        35.93867588043213,
+        52.672307944856584,
+        38.04225730895996
+      ],
+      "surface_area_native2": 4893.089393477813,
+      "physical_unit_status": "unverified"
     },
     {
       "source_id": "prep_seven_eighth_01",
@@ -54,9 +69,14 @@
       "connected_components": 2,
       "largest_component_faces": 420578,
       "watertight": false,
-      "extents_mm": [58.216461181640625, 53.76152965519577, 47.4447021484375],
-      "surface_area_mm2": 7950.744452594533,
-      "status": "geometry_described_review_scope_required"
+      "status": "geometry_described_review_scope_required",
+      "extents_native": [
+        58.216461181640625,
+        53.76152965519577,
+        47.4447021484375
+      ],
+      "surface_area_native2": 7950.744452594533,
+      "physical_unit_status": "unverified"
     },
     {
       "source_id": "prep_three_quarter_molar_01",
@@ -68,9 +88,14 @@
       "connected_components": 6,
       "largest_component_faces": 370532,
       "watertight": false,
-      "extents_mm": [56.683719635009766, 46.825226198881865, 45.05901336669922],
-      "surface_area_mm2": 7491.873585763939,
-      "status": "geometry_described_review_scope_required"
+      "status": "geometry_described_review_scope_required",
+      "extents_native": [
+        56.683719635009766,
+        46.825226198881865,
+        45.05901336669922
+      ],
+      "surface_area_native2": 7491.873585763939,
+      "physical_unit_status": "unverified"
     },
     {
       "source_id": "prep_three_quarter_premolar_01",
@@ -82,9 +107,14 @@
       "connected_components": 2,
       "largest_component_faces": 351232,
       "watertight": false,
-      "extents_mm": [44.487775802612305, 54.026887899730355, 49.9377498626709],
-      "surface_area_mm2": 6748.45345836368,
-      "status": "geometry_described_review_scope_required"
+      "status": "geometry_described_review_scope_required",
+      "extents_native": [
+        44.487775802612305,
+        54.026887899730355,
+        49.9377498626709
+      ],
+      "surface_area_native2": 6748.45345836368,
+      "physical_unit_status": "unverified"
     },
     {
       "source_id": "prep_three_quarter_anterior_01",
@@ -96,9 +126,14 @@
       "connected_components": 9,
       "largest_component_faces": 307297,
       "watertight": false,
-      "extents_mm": [39.73452186584473, 61.42957763560116, 43.1686372756958],
-      "surface_area_mm2": 5916.279631711466,
-      "status": "geometry_described_review_scope_required"
+      "status": "geometry_described_review_scope_required",
+      "extents_native": [
+        39.73452186584473,
+        61.42957763560116,
+        43.1686372756958
+      ],
+      "surface_area_native2": 5916.279631711466,
+      "physical_unit_status": "unverified"
     }
   ]
 }
